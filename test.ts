@@ -1,16 +1,24 @@
-import PQ from "./index.ts";
+import PQ from "./index.js";
 
 const pq = new PQ({
   concurrency: 2,
   retry: 2,
-  retryMethod: (count: number) => (count ** 2 * 1000) * (Math.random() + 1),
+  /**
+   * @param {number} count
+   * @returns {number}
+   */
+  retryMethod: (count) => (count ** 2 * 1000) * (Math.random() + 1),
   retry_postpone: false,
 });
 
-function Factory (index: number): () => Promise<void> {
-  console.log(`[${index}] factory`);
+/**
+ *
+ * @param {number} index
+ * @returns {Promise<void>}
+ */
+function Factory (index) {
   return async () => {
-    const wait = Math.random() * 1000;
+    const wait = Math.random() * 1000 | 0;
     console.log(`[${index}] start ${wait}`);
     await new Promise((resolve) => setTimeout(resolve, wait));
     console.log(`[${index}] end ${wait}`);

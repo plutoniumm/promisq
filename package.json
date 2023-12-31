@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "type": "module",
   "description": "promise queue",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "bun test.ts",
+    "build": "tsc index.ts --strict --lib es2020 --target es6 && esbuild index.js --minify --outfile=index.min.js --target=es6 && rm index.js && mv index.min.js index.js",
+    "size": "npm run build &> /dev/null && wc -c index.js"
   },
   "author": "plutoniumm",
   "license": "MIT"
