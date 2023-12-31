@@ -22,7 +22,8 @@ function Factory (index) {
     console.log(`[${index}] start ${wait}`);
     await new Promise((resolve) => setTimeout(resolve, wait));
     console.log(`[${index}] end ${wait}`);
-    if (Math.random() > 0.25) {
+    if (Math.random() < 0.25) {
+      console.log(`TRIGGERING ERROR [${index}]`);
       // error out with 25% chance to test retry
       throw new Error("random error");
     }
