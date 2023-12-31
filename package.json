@@ -1,0 +1,11 @@
+{
+  "name": "promisq",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "promise queue",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "plutoniumm",
+  "license": "MIT"
+}
